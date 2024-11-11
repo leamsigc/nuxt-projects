@@ -16,6 +16,7 @@ interface BenefitsProps {
   icon: string;
   title: string;
   description: string;
+  link?: string;
 }
 interface Props {
   list?: BenefitsProps[];
@@ -91,32 +92,28 @@ const iconMap: Record<
       </div>
 
       <div class="grid lg:grid-cols-2 gap-4 w-full">
-        <ShinyCard
-          v-for="({ icon, title, description }, index) in list"
-          :key="title"
-          :show-bg="false"
-        >
-          <UiCard
-            class="bg-muted/50 dark:bg-card hover:bg-background dark:hover:bg-background transition-all delay-75 group/number"
-          >
-            <UiCardHeader>
-              <div class="flex justify-between">
-                <component class="size-8 mb-6 text-primary" :is="iconMap[icon]" />
+        <ShinyCard v-for="({ icon, title, description, link }, index) in list" :key="title" :show-bg="false">
+          <NuxtLink :href="link ? link : '#'" class="cursor-pointer">
+            <UiCard
+              class="bg-muted/50 dark:bg-card hover:bg-background dark:hover:bg-background transition-all delay-75 group/number h-full">
+              <UiCardHeader>
+                <div class="flex justify-between">
+                  <component class="size-8 mb-6 text-primary" :is="iconMap[icon]" />
 
-                <span
-                  class="text-5xl text-muted-foreground/15 font-medium transition-all delay-75 group-hover/number:text-muted-foreground/30"
-                >
-                  0{{ index + 1 }}
-                </span>
-              </div>
+                  <span
+                    class="text-5xl text-muted-foreground/15 font-medium transition-all delay-75 group-hover/number:text-muted-foreground/30">
+                    0{{ index + 1 }}
+                  </span>
+                </div>
 
-              <UiCardTitle>{{ title }}</UiCardTitle>
-            </UiCardHeader>
+                <UiCardTitle>{{ title }}</UiCardTitle>
+              </UiCardHeader>
 
-            <UiCardContent class="text-muted-foreground">
-              {{ description }}
-            </UiCardContent>
-          </UiCard>
+              <UiCardContent class="text-muted-foreground">
+                {{ description }}
+              </UiCardContent>
+            </UiCard>
+          </NuxtLink>
         </ShinyCard>
       </div>
     </div>

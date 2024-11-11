@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<Props>(), {
       name: "Sophia Collins",
       userName: "Cybersecurity Analyst",
       comment:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. ",
+        "They have the best collection of Advanced templates for your Nuxt Project. I really like this template. It's so easy to use and customize.",
       rating: 4.8,
     },
 
@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<Props>(), {
       name: "Adam Johnson",
       userName: "Chief Technology Officer",
       comment:
-        "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "I was looking for a example of the integration with Better Auth and I found it here. It's so easy to use and customize.",
       rating: 4.9,
     },
     {
@@ -54,16 +54,16 @@ const props = withDefaults(defineProps<Props>(), {
       name: "Ethan Parker",
       userName: "Data Scientist",
       comment:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      rating: 5.0,
+        "All the reviews are false. I've never seen anything like this before. It's amazing. I love it.",
+      rating: 3.0,
     },
     {
       image: "https://github.com/shadcn.png",
       name: "Ava Mitchell",
       userName: "IT Project Manager",
       comment:
-        "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud incididunt consectetur adipiscing elit.",
-      rating: 5.0,
+        "Just wasting my time. I can't believe that I spend the last 4 hours looking at the project.",
+      rating: 1.0,
     },
     {
       image: "https://github.com/shadcn.png",
@@ -71,7 +71,7 @@ const props = withDefaults(defineProps<Props>(), {
       userName: "DevOps Engineer",
       comment:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      rating: 4.9,
+      rating: 1.9,
     },
   ],
 });
@@ -90,28 +90,23 @@ const { list } = toRefs(props);
           Hear What Our 1000+ Clients Say
         </ContentSlot>
       </h3>
+      <p class="md:w-1/2 mx-auto text-xl text-center text-muted-foreground mb-8">
+        <ContentSlot :use="$slots.description" unwrap="p">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem fugiat, odit
+          similique quasi sint reiciendis quidem iure veritatis optio facere tenetur.
+        </ContentSlot>
+      </p>
     </div>
 
-    <UiCarousel
-      :opts="{
-        align: 'start',
-      }"
-      class="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
-    >
+    <UiCarousel :opts="{
+      align: 'start',
+    }" class="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto">
       <UiCarouselContent>
-        <UiCarouselItem
-          v-for="review in list"
-          :key="review.name"
-          class="md:basis-1/2 lg:basis-1/3"
-        >
+        <UiCarouselItem v-for="review in list" :key="review.name" class="md:basis-1/2 lg:basis-1/3">
           <UiCard class="bg-muted/50 dark:bg-card">
             <UiCardContent class="pt-6 pb-0">
               <div class="flex gap-1 pb-6">
-                <Star class="size-4 fill-primary text-primary" />
-                <Star class="size-4 fill-primary text-primary" />
-                <Star class="size-4 fill-primary text-primary" />
-                <Star class="size-4 fill-primary text-primary" />
-                <Star class="size-4 fill-primary text-primary" />
+                <Star class="size-4 fill-primary text-primary" v-for="n in Math.round(review.rating)" :key="n" />
               </div>
 
               "{{ review.comment }}"
@@ -120,10 +115,7 @@ const { list } = toRefs(props);
             <UiCardHeader>
               <div class="flex flex-row items-center gap-4">
                 <UiAvatar>
-                  <UiAvatarImage
-                    src="https://www.radix-vue.com/logo.svg"
-                    alt="@radix-vue"
-                  />
+                  <UiAvatarImage src="https://www.radix-vue.com/logo.svg" alt="@radix-vue" />
                   <UiAvatarFallback>SV</UiAvatarFallback>
                 </UiAvatar>
 

@@ -133,17 +133,6 @@ const { list } = toRefs(props);
       </div>
     </div>
   </section>
-  <div
-    id="container"
-    class="container w-screen min-h-screen p-12 grid grid-cols-12 gap-6"
-  >
-    <ShinyCard class="h-80 col-span-8" />
-    <ShinyCard class="h-80 col-span-4" />
-    <ShinyCard class="h-80 col-span-6" />
-    <ShinyCard class="h-80 col-span-6" />
-    <ShinyCard class="h-80 col-span-4" />
-    <ShinyCard class="h-80 col-span-8" />
-  </div>
 </template>
 
 <style lang="less" scoped></style>
